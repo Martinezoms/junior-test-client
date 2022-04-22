@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../atoms/Button/Button';
 import { ProductCard } from '../../components';
-import { products } from '../../db';
+import { PRODUCTS } from '../../db';
 import './ProductsListPage.scss';
 
 const ProductsListPage = () => {
+  const [checkedProducts, setCheckedProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(PRODUCTS);
+  }, []);
+
+  const handleMassDelete = () => {
+    // let productsAfterMassDelete = '';
+    // checkedProducts.filter((checkedProduct) => {
+    //   productsAfterMassDelete = products.filter((product) => product.id !== checkedProduct.id);
+    //   return productsAfterMassDelete;
+    // });
+    // console.log(productsAfterMassDelete);
+  };
+
   return (
     <div className="products__list-container">
       <header>
@@ -12,14 +29,28 @@ const ProductsListPage = () => {
           <h2>Product List</h2>
         </div>
         <div className="products__list-btns">
-          <Button type="button" value="add" color="#04AA6D" />
-          <Button id="delete-product-btn" type="button" value="mass delete" color="#c50101" disabled={true} />
+          <Link to="add">
+            <Button type="button" value="add" color="#04AA6D" />
+          </Link>
+          <Button
+            id="delete-product-btn"
+            type="button"
+            value="mass delete"
+            color="#c50101"
+            disabled={checkedProducts.length > 0 ? false : true}
+            handleClick={handleMassDelete}
+          />
         </div>
       </header>
       <hr />
       <div className="products__list-cards">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            setCheckedProducts={setCheckedProducts}
+            checkedProducts={checkedProducts}
+          />
         ))}
       </div>
     </div>
