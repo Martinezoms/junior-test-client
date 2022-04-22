@@ -1,0 +1,27 @@
+.products__list-container {
+  header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  & .products__list-btns {
+    display: flex;
+    margin: 0 1rem;
+    gap: 1.5rem;
+  }
+
+  & .products__list-cards {
+    margin: 2rem 0;
+    min-height: 67vh;
+    display: flex;
+    // justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
