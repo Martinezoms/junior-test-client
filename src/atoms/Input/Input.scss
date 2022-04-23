@@ -1,0 +1,22 @@
+.input-container {
+  width: 17rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  label {
+    font-size: 15px;
+    text-transform: uppercase;
+  }
+
+  input {
+    margin: 1rem 0;
+    padding:  6px 10px;
+    font-size: 12px;
+   border: 1px solid black;
+
+   &:focus {
+     outline: none;
+   }
+  }
+}

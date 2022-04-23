@@ -1,9 +1,16 @@
 import './Button.scss';
 
-const Button = ({ value, color, disabled, handleClick }) => {
+const Button = ({ value, color, disabled, handleClick, id, type }) => {
   return (
     <div className="button">
-      <input type="submit" value={value} disabled={disabled} style={{ background: color }} onClick={handleClick} />
+      <input
+        type={type}
+        id={id}
+        value={value}
+        disabled={disabled}
+        style={{ background: color }}
+        onClick={handleClick}
+      />
     </div>
   );
 };

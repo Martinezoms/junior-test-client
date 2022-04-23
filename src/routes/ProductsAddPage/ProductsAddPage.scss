@@ -1,0 +1,51 @@
+.products__add-container {
+  header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  & .products__add-btns {
+    display: flex;
+    margin: 0 1rem;
+    gap: 1.5rem;
+  }
+
+  form {
+    margin: 2rem 0;
+    min-height: 67vh;
+    display: flex;
+    flex-direction: column;
+
+& .type-switcher {
+  margin-top: 30px;
+  width: 15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  label {
+    font-size: 15px;
+    text-transform: uppercase;
+  }
+
+  select {
+    margin: 1rem 0;
+    padding:  6px 10px;
+    font-size: 12px;
+    background-color: inherit;
+   border: 1px solid black;
+   cursor: pointer;
+
+   &:focus {
+     outline: none;
+   }
+
+  }
+}
+  }
+}
