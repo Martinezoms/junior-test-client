@@ -14,12 +14,12 @@ const ProductsListPage = () => {
   }, []);
 
   const handleMassDelete = () => {
-    // let productsAfterMassDelete = '';
-    // checkedProducts.filter((checkedProduct) => {
-    //   productsAfterMassDelete = products.filter((product) => product.id !== checkedProduct.id);
-    //   return productsAfterMassDelete;
-    // });
-    // console.log(productsAfterMassDelete);
+    let productsAfterMassDelete = products;
+    for (let i = 0; i < checkedProducts.length; i++) {
+      productsAfterMassDelete = productsAfterMassDelete.filter((product) => product.id !== checkedProducts[i].id);
+    }
+    setProducts(productsAfterMassDelete);
+    setCheckedProducts([]);
   };
 
   return (
