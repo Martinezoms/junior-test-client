@@ -49,3 +49,37 @@
 }
   }
 }
+
+.dynamic-form {
+  max-width: 450px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 10px;
+  border: 1px solid black;
+
+  & .inputs {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    gap: 20px;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  input {
+    width: 70%;
+    padding:  6px 10px;
+    font-size: 12px;
+   border: 1px solid black;
+  
+   &:focus {
+     outline: none;
+   }
+  }
+
+
+}
+

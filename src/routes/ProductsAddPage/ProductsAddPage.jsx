@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, Input } from '../../atoms/index';
 import './ProductsAddPage.scss';
@@ -16,7 +18,22 @@ const inputDetails = [
     name: 'price ($)'
   }
 ];
+
 const ProductsAddPage = () => {
+  const [selectedForm, setSelectedForm] = useState([]);
+
+  const FetchFormType = async (formSelection) => {
+    const res = await axios.post('http://localhost:3000/junior-test-server/api/type/get_type.php', {
+      type: formSelection
+    });
+    setSelectedForm(res.data.data);
+  };
+
+  const handleTypeSelection = (e) => {
+    const formSelection = e.target.value;
+    FetchFormType(formSelection);
+  };
+
   return (
     <div className="products__add-container">
       <header>
@@ -37,12 +54,28 @@ const ProductsAddPage = () => {
         ))}
         <div className="type-switcher">
           <label htmlFor="type-switcher">Type switcher</label>
-          <select>
+          <select defaultValue="Select type" onChange={handleTypeSelection}>
+            <option disabled>Select type</option>
             {['DVD', 'Book', 'Furniture'].map((item, i) => (
-              <option key={i}>{item}</option>
+              <option id={item} value={item} key={i}>
+                {item}
+              </option>
             ))}
           </select>
         </div>
+        {selectedForm.map((form, i) => (
+          <div key={i}>
+            <div key={i} className="dynamic-form">
+              {form.label.split(',').map((label, i) => (
+                <div className="inputs" key={i}>
+                  <label htmlFor={form.input_id.split(',')[i]}>{label}</label>
+                  <input key={form.input_id.split(',')[i]} type="number" id={form.input_id.split(',')[i]} />
+                </div>
+              ))}
+              <p>Please provide {form.description}</p>
+            </div>
+          </div>
+        ))}
       </form>
     </div>
   );
